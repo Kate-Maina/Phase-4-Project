@@ -59,10 +59,10 @@ To address these, we used **NLTK** and **regex** for text cleaning and **scikit-
 ## Model Selection
 We experimented with several machine learning models for sentiment classification:  
 
-- **Logistic Regression** – 78% accuracy  
-- **Naive Bayes** – 74% accuracy  
-- **XGBoost** – 82% accuracy  
-- **Stacking Classifiers** – **85% accuracy (best-performing)**  
+- **Logistic Regression**  
+- **Naive Bayes**   
+- **XGBoost**   
+- **Stacking Classifiers**   
 
 The **Stacking Classifier (pipeline_multi2)** was selected as the final model.  
 It was saved as **`sentiment_model.pkl`** for deployment.

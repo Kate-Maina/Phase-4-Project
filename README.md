@@ -54,6 +54,7 @@ Before modeling, we explored the dataset to better understand its structure and 
 - **Data Quality Issues:** Some missing tweets were dropped during preprocessing.  
 
 To address these, we used **NLTK** and **regex** for text cleaning and **scikit-learn** for building models.
+
 ---
 ## Model Selection
 We experimented with several machine learning models for sentiment classification:  
@@ -65,6 +66,7 @@ We experimented with several machine learning models for sentiment classificatio
 
 The **Stacking Classifier (pipeline_multi2)** was selected as the final model.  
 It was saved as **`sentiment_model.pkl`** for deployment.
+
 ---
 ## Results
 - Text preprocessing (cleaning, tokenization, and vectorization) significantly improved accuracy.  

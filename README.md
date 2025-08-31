@@ -11,11 +11,15 @@
 6. Peter Chemonges
 ---
 ## Project Overview
+
 This project focuses on analyzing sentiments expressed in tweets about **Google** and **Apple** products. The main goal is to build a machine learning model capable of classifying tweets as **positive** or **negative**, helping businesses understand customer perceptions and make informed decisions.
+
 ---
 ### Project Collaboration
+
 To ensure smooth teamwork and effective execution, we used **Notion** as our project management tool. It allowed us to organize the project timeline, assign and track tasks, and coordinate team contributions efficiently.  
 View our project planner here: [Notion Project Planner](https://www.notion.so/Group-Project-Planner-25dab49cbc0480d689b1f02636462aad?source=copy_link).
+
 ---
 ## Objectives
 - Collect and clean raw Twitter data related to Google and Apple products.  
@@ -36,6 +40,7 @@ The dataset used in this project was gathered from **Twitter via CrowdFlower**. 
 3. **Sentiment** – The sentiment label (positive or negative).  
 
 The main goal is to predict the sentiment of a tweet directly from raw text.
+
 ---
 ## Data Understanding
 Before modeling, we explored the dataset to better understand its structure and challenges:  

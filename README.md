@@ -56,6 +56,15 @@ Before modeling, we explored the dataset to better understand its structure and 
 To address these, we used **NLTK** and **regex** for text cleaning and **scikit-learn** for building models.
 
 ---
+
+## Exploratory Data Analysis (EDA)
+
+To better understand the dataset and inform preprocessing decisions, several aspects of the data were explored. A significant portion of the tweets focused on **Apple**, with fewer referencing **Google**, indicating an imbalance in company mentions. The tweet text was found to be informal and noisy, often including elements like emojis, hashtags, mentions, and URLs. This highlighted the need for thorough text cleaning. Additionally, some records contained missing values, which were removed to ensure data quality. We also examined the distribution of tweet lengths to get a sense of how concise or detailed the messages were, which helped guide tokenization and padding strategies during preprocessing.
+
+![EDA](Images/output.png)
+
+---
+
 ## Model Selection
 We experimented with several machine learning models for sentiment classification:  
 
@@ -71,7 +80,10 @@ It was saved as **`sentiment_model.pkl`** for deployment.
 ## Results
 - Text preprocessing (cleaning, tokenization, and vectorization) significantly improved accuracy.  
 - Ensemble models (XGBoost, Stacking) outperformed simpler baselines (Logistic Regression, Naive Bayes).  
-- The final model can reliably classify tweets into positive or negative sentiment, providing actionable insights.  
+- The final model can reliably classify tweets into positive or negative sentiment, providing actionable insights. 
+
+![EDA](Images/output2.png)
+
 ---
 ## Conclusions
 1. Text preprocessing played a critical role in improving model accuracy.  

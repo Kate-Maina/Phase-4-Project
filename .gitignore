@@ -214,5 +214,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-app.py
-runtime.txt
+#app.py
+# runtime.txt
+requirements-dev.txt

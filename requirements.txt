@@ -1,9 +1,5 @@
-flask
-gunicorn
-scikit-learn
-xgboost
-joblib
-pandas
-numpy
-nltk
-regex
+joblib==1.5.2
+numpy==2.3.2
+scikit-learn==1.7.1
+scipy==1.16.1
+threadpoolctl==3.6.0

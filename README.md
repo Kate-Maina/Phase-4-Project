@@ -102,4 +102,22 @@ It was saved as **`sentiment_model.pkl`** for deployment.
 
 ---
 
-**Next Steps:** Deployment of the final model (`sentiment_model.pkl`) as a Flask app for real-time sentiment prediction.
+##  Sentiment Analysis API
+
+This is a Flask-based sentiment analysis API that predicts emotions from text using a trained machine learning model.
+
+###  Live Demo
+
+👉 [Try the API on Heroku](https://tweetmoodz-a6e4ceda30b2.herokuapp.com/)
+
+You can send a `POST` request to the `/predict` endpoint with JSON like:
+
+```json
+{
+  "text": "I love this app!"
+}
+{
+  "input_text": "I love this app!",
+  "predicted_sentiment": "Positive emotion"
+}
+

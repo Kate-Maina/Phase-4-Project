@@ -1,35 +1,47 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import joblib
 import traceback
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 
-# Load the trained model
-# Make sure you already saved it as: joblib.dump(pipeline_multi2, "sentiment_model.pkl")
-model = joblib.load("sentiment_model.pkl")
+# Ensure NLTK resources
+nltk.download('punkt')
+nltk.download('stopwords')
 
-# Initialize Flask app
 app = Flask(__name__)
 
-@app.route("/")
+# Load stopwords
+stop_words = set(stopwords.words('english'))
+
+# Preprocessing function
+def preprocess_text(text):
+    if not isinstance(text, str):
+        return ''
+    return ' '.join(
+        [word for word in word_tokenize(text.lower()) if word.isalpha() and word not in stop_words]
+    )
+
+# ✅ Load pretrained model
+model = joblib.load("sentiment_model.pkl")
+
+@app.route('/')
 def home():
-    return "Welcome to the Sentiment Analysis API! Use the /predict endpoint."
+    return render_template('index.html')  # simple UI
 
-@app.route("/predict", methods=["POST"])
-def predict():
+@app.route('/analyze', methods=['POST'])
+def analyze():
     try:
-        # Expecting JSON input like: {"text": "I love this product!"}
-        data = request.get_json(force=True)
-        text = data.get("text", "")
+        data = request.get_json()
+        tweet = data.get("tweet")
 
-        if not text.strip():
-            return jsonify({"error": "No text provided"}), 400
+        if not tweet:
+            return jsonify({"error": "No tweet provided"}), 400
 
-        # Predict sentiment
-        prediction = model.predict([text])[0]
+        preprocessed_tweet = preprocess_text(tweet)
+        sentiment = model.predict([preprocessed_tweet])[0]
 
-        return jsonify({
-            "input_text": text,
-            "predicted_sentiment": prediction
-        })
+        return jsonify({"sentiment": sentiment})
 
     except Exception as e:
         return jsonify({
@@ -37,6 +49,5 @@ def predict():
             "trace": traceback.format_exc()
         }), 500
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=5000)

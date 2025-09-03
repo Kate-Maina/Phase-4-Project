@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f6f8;
+      background: linear-gradient(135deg, #007BFF, #66B2FF); /* Blue gradient */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -18,7 +18,7 @@
       background: white;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
       max-width: 500px;
       width: 100%;
       text-align: center;
@@ -33,7 +33,7 @@
       border: 1px solid #ccc;
     }
     button {
-      background: #007BFF;
+      background: #0056b3;
       color: white;
       border: none;
       padding: 12px 20px;
@@ -42,13 +42,21 @@
       cursor: pointer;
     }
     button:hover {
-      background: #0056b3;
+      background: #003f7f;
     }
     #result {
       margin-top: 20px;
       font-size: 18px;
       font-weight: bold;
-      color: #333;
+    }
+    .positive {
+      color: green;
+    }
+    .negative {
+      color: red;
+    }
+    .neutral {
+      color: gray;
     }
   </style>
 </head>
@@ -66,16 +74,31 @@
   <script>
     async function analyze() {
       const tweet = document.getElementById("tweet").value;
-      const response = await fetch("/analyze", {
+
+      const response = await fetch("/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tweet: tweet })
+        body: JSON.stringify({ text: tweet })
       });
+
       const data = await response.json();
-      document.getElementById("result").innerText =
-        data.sentiment
-          ? "Predicted Sentiment: " + data.sentiment
-          : "Error: " + (data.error || "Something went wrong");
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerText = "";
+
+      if (data.predicted_sentiment) {
+        resultDiv.innerText = "Predicted Sentiment: " + data.predicted_sentiment;
+
+        if (data.predicted_sentiment.toLowerCase().includes("positive")) {
+          resultDiv.className = "positive";
+        } else if (data.predicted_sentiment.toLowerCase().includes("negative")) {
+          resultDiv.className = "negative";
+        } else {
+          resultDiv.className = "neutral";
+        }
+      } else {
+        resultDiv.innerText = "Error: " + (data.error || "Something went wrong");
+        resultDiv.className = "neutral";
+      }
     }
   </script>
 </body>

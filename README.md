@@ -26,13 +26,19 @@ View our project planner here: [Notion Project Planner](https://www.notion.so/Gr
 - Explore and analyze sentiment distributions.  
 - Build and evaluate multiple machine learning models for sentiment classification.  
 - Identify the best-performing model and save it for deployment (`sentiment_model.pkl`).  
-- Deploy the model to a cloud-based service (Flask/FastAPI) for real-time sentiment analysis.  
+- Deploy the model to a cloud-based service (Flask/FastAPI) for real-time sentiment analysis. 
+
 ---
 ## Business Understanding
 Businesses need to understand public opinion about their products quickly and accurately. Manually analyzing social media sentiment is time-consuming and inefficient. Automating sentiment analysis provides insights that help companies:  
 - Respond faster to customer concerns.  
 - Detect risks to brand reputation early.  
 - Align marketing strategies with customer perception.  
+
+## Data Source  
+The dataset used in this project comes from [CrowdFlower](https://data.world/crowdflower/brands-and-product-emotions) and contains over 9,000 tweets, expressed as a positive, negative, or neutral sentiment.
+
+---
 
 The dataset used in this project was gathered from **Twitter via CrowdFlower**. It contains three key columns:  
 1. **Text** – The tweet content.  

@@ -217,3 +217,8 @@ __marimo__/
 #app.py
 # runtime.txt
 requirements-dev.txt
+nltk_data/*
+!nltk_data/tokenizers/
+!nltk_data/tokenizers/punkt/**
+!nltk_data/corpora/
+!nltk_data/corpora/stopwords/**
